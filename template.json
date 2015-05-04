@@ -3,11 +3,8 @@
       "name": "alvaro/devstack_docker"
     },
     "variables": {
-        "PACKER_BOX_NAME": "ubuntu-14.04.2-server-amd64",
-        "AWS_ACCESS_KEY_ID": "{{env `AWS_ACCESS_KEY_ID`}}",
-        "AWS_SECRET_ACCESS_KEY": "{{env `AWS_SECRET_ACCESS_KEY`}}",
-        "atlas_username": "{{env `ATLAS_USERNAME`}}",
-        "atlas_name": "{{env `ATLAS_NAME`}}"
+        "atlas_username": "alvaro",
+        "atlas_name": "devstack_docker"
     },
     "builders": [
         {
@@ -43,7 +40,7 @@
             "http_directory": "http",
             "iso_checksum": "8acd2f56bfcba2f7ac74a7e4a5e565ce68c024c38525c0285573e41c86ae90c0",
             "iso_checksum_type": "sha256",
-            "iso_url": "http://releases.ubuntu.com/14.04.2/{{ user `PACKER_BOX_NAME` }}.iso",
+            "iso_url": "http://releases.ubuntu.com/14.04.2/ubuntu-14.04.2-server-amd64.iso",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "ssh_port": 22,
@@ -85,7 +82,7 @@
             "http_directory": "http",
             "iso_checksum": "8acd2f56bfcba2f7ac74a7e4a5e565ce68c024c38525c0285573e41c86ae90c0",
             "iso_checksum_type": "sha256",
-            "iso_url": "http://releases.ubuntu.com/14.04.2/{{ user `PACKER_BOX_NAME` }}.iso",
+            "iso_url": "http://releases.ubuntu.com/14.04.2/ubuntu-14.04.2-server-amd64.iso",
             "skip_compaction": true,
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
@@ -93,16 +90,6 @@
             "ssh_wait_timeout": "10000s",
             "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
             "tools_upload_flavor": "linux"
-        },
-    {
-        "type": "amazon-ebs",
-        "access_key": "{{user `AWS_ACCESS_KEY_ID`}}",
-        "secret_key": "{{user `AWS_SECRET_ACCESS_KEY`}}",
-        "region": "us-east-1",
-        "source_ami": "ami-e63b3e8e",
-        "instance_type": "t1.micro",
-        "ssh_username": "ubuntu",
-        "ami_name": "devstack_docker {{timestamp}}"
     }],
     "provisioners": [
     {
@@ -124,9 +111,6 @@
               },
               "vmware-iso": {
                   "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
-              },
-              "amazon-ebs": {
-                  "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
               }
          }
     }],
@@ -142,7 +126,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "0.0.1"
+                "version": "0.0.2"
             }
         },
         {
@@ -152,16 +136,8 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "0.0.1"
+                "version": "0.0.2"
             }
-        },
-      {
-        "type": "atlas",
-        "only": ["amazon-ebs"],
-        "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
-        "artifact_type": "aws.ami",
-        "metadata": {
-          "created_at": "{{timestamp}}"
         }
       }]
     ]

@@ -1,13 +1,13 @@
 {
+    "push": {
+      "name": "alvaro/devstack_docker"
+    },
     "variables": {
         "PACKER_BOX_NAME": "ubuntu-14.04.2-server-amd64",
         "AWS_ACCESS_KEY_ID": "{{env `AWS_ACCESS_KEY_ID`}}",
         "AWS_SECRET_ACCESS_KEY": "{{env `AWS_SECRET_ACCESS_KEY`}}",
         "atlas_username": "{{env `ATLAS_USERNAME`}}",
         "atlas_name": "{{env `ATLAS_NAME`}}"
-    },
-    "push": {
-      "name": "alvaro/devstack_docker"
     },
     "builders": [
         {
@@ -107,7 +107,6 @@
     "provisioners": [
     {
         "type": "shell",
-        "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}'",
         "scripts": [
           "scripts/update.sh",
           "scripts/sshd.sh",
@@ -118,10 +117,21 @@
           "scripts/filesystem.sh",
           "scripts/os_packages.sh",
           "scripts/git_clone.sh"
-        ]
+        ],
+          "override": {
+              "virtualbox-iso": {
+                  "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+              },
+              "vmware-iso": {
+                  "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+              },
+              "amazon-ebs": {
+                  "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+              }
+         }
     }],
     "post-processors": [
-      {
+      [{
             "type": "vagrant",
             "keep_input_artifact": false
         },
@@ -153,6 +163,6 @@
         "metadata": {
           "created_at": "{{timestamp}}"
         }
-      }
+      }]
     ]
 }

@@ -1,6 +1,5 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "alvaro/devstack_docker"
-  config.vm.network :private_network, ip: "172.16.10.2"
   config.vm.network "forwarded_port", guest: 80, host: 8888
   config.vm.network "forwarded_port", guest: 5000, host: 5555
   config.vm.provision :shell, privileged: false, :inline => "bash /vagrant/scripts/provision.sh"

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# ensure the correct kernel headers are installed
+apt-get -y install linux-headers-$(uname -r)
+
 case "$PACKER_BUILDER_TYPE" in 
 
 virtualbox-iso|virtualbox-ovf) 

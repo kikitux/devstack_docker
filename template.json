@@ -1,6 +1,7 @@
 {
     "push": {
-      "name": "alvaro/devstack_docker"
+      "name": "alvaro/devstack_docker",
+      "vcs": true
     },
     "variables": {
         "atlas_username": "alvaro",

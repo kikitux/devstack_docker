@@ -96,14 +96,9 @@
         "type": "shell",
         "scripts": [
           "scripts/update.sh",
-          "scripts/sshd.sh",
-          "scripts/networking.sh",
-          "scripts/sudoers.sh",
-          "scripts/vagrant.sh",
-          "scripts/vmtools.sh",
-          "scripts/filesystem.sh",
           "scripts/os_packages.sh",
-          "scripts/git_clone.sh"
+          "scripts/git_clone.sh",
+          "scripts/reboot.sh"
         ],
           "override": {
               "virtualbox-iso": {
@@ -113,7 +108,28 @@
                   "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
               }
          }
-    }],
+    },
+    {
+        "type": "shell",
+        "pause_before": "20s",
+        "scripts": [
+          "scripts/sshd.sh",
+          "scripts/networking.sh",
+          "scripts/sudoers.sh",
+          "scripts/vagrant.sh",
+          "scripts/vmtools.sh",
+          "scripts/filesystem.sh"
+        ],
+          "override": {
+              "virtualbox-iso": {
+                  "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+              },
+              "vmware-iso": {
+                  "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+              }
+         }
+    }
+    ],
     "post-processors": [
       [{
             "type": "vagrant",
@@ -126,7 +142,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "0.0.2"
+                "version": "0.0.3"
             }
         },
         {
@@ -136,9 +152,9 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "0.0.2"
+                "version": "0.0.3"
             }
         }
-      }]
+      ]
     ]
 }

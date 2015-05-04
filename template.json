@@ -1,7 +1,6 @@
 {
     "push": {
-      "name": "alvaro/devstack_docker",
-      "vcs": true
+      "name": "alvaro/devstack_docker"
     },
     "variables": {
         "atlas_username": "alvaro",
@@ -103,10 +102,10 @@
         ],
           "override": {
               "virtualbox-iso": {
-                  "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+                  "execute_command": "echo 'vagrant'| {{ .Vars }} sudo -E -S bash '{{.Path}}'"
               },
               "vmware-iso": {
-                  "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+                  "execute_command": "echo 'vagrant'| {{ .Vars }} sudo -E -S bash '{{.Path}}'"
               }
          }
     },
@@ -123,10 +122,10 @@
         ],
           "override": {
               "virtualbox-iso": {
-                  "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+                  "execute_command": "echo 'vagrant'| {{ .Vars }} sudo -E -S bash '{{.Path}}'"
               },
               "vmware-iso": {
-                  "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+                  "execute_command": "echo 'vagrant'| {{ .Vars }} sudo -E -S bash '{{.Path}}'"
               }
          }
     }
@@ -143,7 +142,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "0.0.4"
+                "version": "0.0.6"
             }
         },
         {
@@ -153,7 +152,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "0.0.4"
+                "version": "0.0.6"
             }
         }
       ]

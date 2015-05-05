@@ -117,3 +117,5 @@ demo / password
 ![screenshot/system_hypervisors.png](screenshot/system_hypervisors.png)
 
 ![screenshot/system_information.png](screenshot/system_information.png)
+
+![screenshot/instance_details_test0.png](screenshot/instance_details_test0.png)

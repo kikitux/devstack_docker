@@ -1,7 +1,7 @@
 # devstack_docker
-For demo in Openstack HP Meetup
+## For demo in Openstack HP Meetup
 
-# Vagrantfile
+## Vagrantfile
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -18,7 +18,7 @@ end
 
 ```
 
-# Initial deployment on vagrant
+## Initial deployment on vagrant
 
 ```
 real    23m34.177s                                                                                                                                                                                                         
@@ -26,9 +26,9 @@ user    0m31.950s
 sys     0m5.193s  
 ```
 
-# Then
+## Then
 
-Neutron configuration
+### Neutron configuration
 
 ```
 vagrant ssh
@@ -51,8 +51,9 @@ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 ```
 
-Starting a Docker container
+### Starting a Docker container
 
+```
 . openrc admin
 
 docker pull larsks/thttpd

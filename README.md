@@ -72,6 +72,14 @@ nova list
 | 0c3...| test0 | ACTIVE |...| Running     | private=internal_ip|
 +----...+-------+--------+...+-------------+--------------------+
 
+$ curl http://internal_ip
+
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>Your web server is working</title>
+[...]
+
 Let's create a floating ip address:
 
 nova floating-ip-create
@@ -92,3 +100,19 @@ $ curl http://172.24.4.3
                 <title>Your web server is working</title>
 [...]
 ```
+
+### Openstack url
+
+http://localhost:8888
+
+http://ip_computer_demo:8888
+
+admin / password
+demo / password
+
+
+![screenshot/login_admin.png](screenshot/login_admin.png)
+
+![screenshot/system_hypervisors.png](screenshot/system_hypervisors.png)
+
+![screenshot/system_information.png](screenshot/system_information.png)

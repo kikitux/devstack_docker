@@ -96,6 +96,8 @@ sudo cp /opt/stack/nova-docker/etc/nova/rootwrap.d/docker.filters   /etc/nova/ro
 
 . openrc admin
 
+glance image-list | grep cirros | cut -d\| -f2 | xargs -n1 glance image-delete
+
 popd
 
 sudo dpkg --get-selections | grep -iv mysql > /vagrant/scripts/installed-software

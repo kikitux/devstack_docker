@@ -2,8 +2,6 @@
 
 sudo apt-get -y update
 sudo apt-get install -y git git-review python-pip python-dev
-sudo apt-get -y upgrade
-sudo apt-get -y dist-upgrade
 sudo easy_install -U pip
 
 curl -sSL https://get.docker.com/ubuntu/ | sudo sh

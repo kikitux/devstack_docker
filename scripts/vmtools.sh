@@ -1,45 +1,30 @@
-#!/bin/bash
+#!/bin/bash -eux
 
-# ensure the correct kernel headers are installed
-apt-get -y install linux-headers-$(uname -r)
+if [ $PACKER_BUILDER_TYPE == 'vmware-iso' ]; then
+    echo "Installing VMware Tools"
 
-case "$PACKER_BUILDER_TYPE" in 
+    mkdir -p /mnt/hgfs
+    apt-get update -y
+    apt-get install -y open-vm-tools module-assistant linux-headers-amd64 linux-image-amd64 open-vm-tools-dkms
+    module-assistant prepare
+    module-assistant --text-mode -f get open-vm-tools-dkms
 
-virtualbox-iso|virtualbox-ovf) 
+    apt-get -y remove linux-headers-$(uname -r) build-essential perl
+    apt-get -y autoremove
+elif [ $PACKER_BUILDER_TYPE == 'virtualbox-iso' ]; then
+    echo "Installing VirtualBox guest additions"
+
+    apt-get install -y linux-headers-$(uname -r) build-essential perl
+    apt-get install -y dkms
+
     mkdir /tmp/vbox
+
     VER=$(cat /home/vagrant/.vbox_version)
-    mount -o loop /home/vagrant/VBoxGuestAdditions_$VER.iso /tmp/vbox 
-    sh /tmp/vbox/VBoxLinuxAdditions.run
+    mount -o loop /home/vagrant/VBoxGuestAdditions_$VER.iso /tmp/vbox
+    sh /tmp/vbox/VBoxLinuxAdditions.run --nox11
     umount /tmp/vbox
     rmdir /tmp/vbox
     rm /home/vagrant/*.iso
-    ln -s /opt/VBoxGuestAdditions-*/lib/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions
-    ;;
+    ln -s /opt/VBoxGuestAdditions-*/lib/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions 
 
-vmware-iso|vmware-ovf) 
-    mkdir /tmp/vmfusion
-    mkdir /tmp/vmfusion-archive
-    mount -o loop /home/vagrant/linux.iso /tmp/vmfusion
-    tar xzf /tmp/vmfusion/VMwareTools-*.tar.gz -C /tmp/vmfusion-archive
-    /tmp/vmfusion-archive/vmware-tools-distrib/vmware-install.pl --default
-    umount /tmp/vmfusion
-    rm -rf  /tmp/vmfusion
-    rm -rf  /tmp/vmfusion-archive
-    rm /home/vagrant/*.iso
-    ;;
-
-parallels-iso|parallels-pvm)
-    mkdir /tmp/parallels
-    mount -o loop /home/vagrant/prl-tools-lin.iso /tmp/parallels
-    /tmp/parallels/install --install-unattended-with-deps
-    umount /tmp/parallels
-    rmdir /tmp/parallels
-    rm /home/vagrant/*.iso
-    ;;
-
-*)
-    echo "Unknown Packer Builder Type >>$PACKER_BUILDER_TYPE<< selected."
-    echo "Known are virtualbox-iso|virtualbox-ovf|vmware-iso|vmware-ovf."
-    ;;
-
-esac
+fi

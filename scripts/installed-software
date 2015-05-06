@@ -476,16 +476,12 @@ linux-firmware					install
 linux-generic-lts-utopic			install
 linux-headers-3.16.0-30				install
 linux-headers-3.16.0-30-generic			install
-linux-headers-3.16.0-36				install
-linux-headers-3.16.0-36-generic			install
 linux-headers-3.16.0-37				install
 linux-headers-3.16.0-37-generic			install
 linux-headers-generic-lts-utopic		install
 linux-image-3.16.0-30-generic			install
-linux-image-3.16.0-36-generic			install
 linux-image-3.16.0-37-generic			install
 linux-image-extra-3.16.0-30-generic		install
-linux-image-extra-3.16.0-36-generic		install
 linux-image-extra-3.16.0-37-generic		install
 linux-image-generic-lts-utopic			install
 linux-libc-dev:amd64				install

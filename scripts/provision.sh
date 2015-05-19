@@ -71,8 +71,8 @@ enable_service q-dhcp
 enable_service q-l3
 enable_service q-meta
 
-#disable_service horizon
-#disable_service tempest
+disable_service tempest
+disable_service horizon
 #OFFLINE=True
 
 # Introduce glance to docker images

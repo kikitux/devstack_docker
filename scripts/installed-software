@@ -499,7 +499,7 @@ lsof						install
 ltrace						install
 lvm2						install
 lxc-docker					install
-lxc-docker-1.6.0				install
+lxc-docker-1.6.2				install
 make						install
 makedev						install
 man-db						install
@@ -607,6 +607,7 @@ shared-mime-info				install
 sharutils					install
 socat						install
 sqlite3						install
+ssh						install
 ssh-import-id					install
 ssl-cert					install
 strace						install

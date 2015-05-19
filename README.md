@@ -47,7 +47,7 @@ neutron security-group-rule-create --protocol tcp \
 --direction ingress --remote-ip-prefix 0.0.0.0/0 default
 
 # To provide internet access to the containers
-iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 ```
 

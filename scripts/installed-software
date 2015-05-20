@@ -95,7 +95,6 @@ erlang-tools					install
 erlang-webtool					install
 erlang-xmerl					install
 ethtool						install
-euca2ools					install
 fakeroot					install
 file						install
 findutils					install
@@ -569,7 +568,6 @@ python-m2crypto					install
 python-minimal					install
 python-numpy					install
 python-pkg-resources				install
-python-requestbuilder				install
 python-requests					install
 python-setuptools				install
 python-six					install

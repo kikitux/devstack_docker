@@ -3,6 +3,7 @@
 sudo apt-get -y update
 sudo apt-get install -y git git-review python-pip python-dev
 sudo easy_install -U pip
+sudo chown -R vagrant: /home/vagrant/
 
 curl -sSL https://get.docker.com/ubuntu/ | sudo sh
 echo 'DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 -G vagrant"' | sudo tee /etc/default/docker
@@ -40,6 +41,7 @@ wait
 
 pushd /opt/stack/nova-docker
 sudo pip install --upgrade .
+sudo chown -R vagrant: /home/vagrant/
 contrib/devstack/prepare_devstack.sh
 
 pushd /opt/stack/devstack

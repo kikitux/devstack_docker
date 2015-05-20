@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 8885, host: 8885
 
   config.vm.provision :shell, privileged: false, :inline => "bash /vagrant/scripts/provision.sh"
+  config.vm.provision :shell, privileged: false, :inline => "bash /vagrant/scripts/nginx.sh"
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--cpus", "2"]

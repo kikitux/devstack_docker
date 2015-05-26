@@ -92,15 +92,14 @@ http://localhost:80nn where nn is the IP of the server
 10.0.0.4 -> localhost 8884
 10.0.0.5 -> localhost 8885
 
-
-
-![screenshot/login_admin.png](screenshot/login_admin.png)
+```
 
 ![screenshot/8885.png](screenshot/8885.png)
 
 
 ### Create a floating ip address:
 
+```
 nova floating-ip-create
 +------------+-----------+----------+--------+
 | Ip         | Server Id | Fixed Ip | Pool   |

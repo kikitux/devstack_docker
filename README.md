@@ -94,6 +94,8 @@ http://localhost:80nn where nn is the IP of the server
 
 
 
+![screenshot/login_admin.png](screenshot/login_admin.png)
+
 ![screenshot/8885.png](screenshot/8885.png)
 
 

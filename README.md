@@ -72,8 +72,11 @@ nova list
 | 0c3...| test0 | ACTIVE |...| Running     | private=internal_ip|
 +----...+-------+--------+...+-------------+--------------------+
 
+```
+
 ### Test Webpage on command line
 
+```
 $ curl http://internal_ip
 
 <!DOCTYPE html>
@@ -81,9 +84,10 @@ $ curl http://internal_ip
         <head>
                 <title>Your web server is working</title>
 [...]
+```
 
 ### Test Webpage on the computer
-
+```
 http://localhost:80nn where nn is the IP of the server
 
 10.0.0.1 -> localhost 8881

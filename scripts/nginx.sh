@@ -1,6 +1,7 @@
 sudo apt-get install -y nginx
 
 [ -f /etc/nginx/sites-enabled/default ] && sudo rm /etc/nginx/sites-enabled/default
+[ -f /etc/nginx/sites-enabled/demo ] && sudo rm /etc/nginx/sites-enabled/demo
 
 for i in 1 2 3 4 5 ; do
   cat <<EOF | sudo tee -a /etc/nginx/sites-enabled/demo >/dev/null

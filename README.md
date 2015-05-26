@@ -72,6 +72,8 @@ nova list
 | 0c3...| test0 | ACTIVE |...| Running     | private=internal_ip|
 +----...+-------+--------+...+-------------+--------------------+
 
+### Test Webpage on command line
+
 $ curl http://internal_ip
 
 <!DOCTYPE html>
@@ -80,7 +82,20 @@ $ curl http://internal_ip
                 <title>Your web server is working</title>
 [...]
 
-Let's create a floating ip address:
+### Test Webpage on the computer
+
+http://localhost:80nn where nn is the IP of the server
+
+10.0.0.1 -> localhost 8881
+10.0.0.2 -> localhost 8882
+10.0.0.3 -> localhost 8883
+10.0.0.4 -> localhost 8884
+10.0.0.5 -> localhost 8885
+
+![screenshot/8885.png](screenshot/8885.png)
+
+
+### Create a floating ip address:
 
 nova floating-ip-create
 +------------+-----------+----------+--------+

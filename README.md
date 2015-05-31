@@ -57,7 +57,7 @@
 ### Step 2: Start a Docker container
 1. Source the admin environment `. openrc admin`
 2. Pull down the [larsks/thttpd](https://registry.hub.docker.com/u/larsks/thttpd/) Docker image `docker pull larsks/thttpd`
-3. Upload image into glance
+3. Create glance image
 
    ```
    docker save larsks/thttpd |

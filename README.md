@@ -34,27 +34,25 @@
 1. Run `vagrant ssh` in the directory the [Vagrantfile](Vagrantfile) is in
 2. Go to the devstack directory `cd /opt/stack/devstack`
 3. Source the demo environment `. openrc demo`
-4. Setup security group icmp ingress rule
+4. Setup security groups
 
    ```
    neutron security-group-rule-create --protocol icmp \
    --direction ingress --remote-ip-prefix 0.0.0.0/0 default
    ```
-5. Setup port 22
 
    ```
    neutron security-group-rule-create --protocol tcp \
    --port-range-min 22 --port-range-max 22 \
    --direction ingress --remote-ip-prefix 0.0.0.0/0 default
    ```
-6. Setup port 80
 
    ```
    neutron security-group-rule-create --protocol tcp \
    --port-range-min 80 --port-range-max 80 \
    --direction ingress --remote-ip-prefix 0.0.0.0/0 default
    ```
-7. Provide internet access to the containers `sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`
+5. Provide internet access to the containers `sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`
 
 ### Step 2: Start a Docker container
 1. Source the admin environment `. openrc admin`

@@ -27,7 +27,7 @@
      end
    end
    ```
-3. Run `vagrant up --provider=virtualbox` in the directory the Vagrantfile is in to download the DevStack Vagrant box and spin up the VM
+3. Run `vagrant up --provider virtualbox` in the directory the Vagrantfile is in to download the DevStack Vagrant box and spin up the VM
 4. That's it! [Login to your OpenStack dashboard](#login-to-your-openstack-dashboard), then follow the below steps to spin up a web server which can be viewed in your dashboard
 
 ### Step 1: Neutron configuration

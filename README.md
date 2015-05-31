@@ -87,7 +87,7 @@
                    <title>Your web server is working</title>
    [...]
    ```
-3. In the browser go to http://localhost:88nn where nn is the IP of the server
+3. In the browser go to http://localhost:888n where n is the IP of the server
 
    ```
    10.0.0.1 -> localhost 8881

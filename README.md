@@ -2,9 +2,13 @@
 
 ### General setup
 - Download and install [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html)
-   If you already have Vagrant installed, we suggest update to the current version available.
+   
+If you already have Vagrant installed, we suggest update to the current version available.
+
 - Download a copy of this repo in [zip format](https://github.com/kikitux/devstack_docker/archive/master.zip) or just clone it
+
 `git clone https://github.com/kikitux/devstack_docker.git`
+
 - Run `vagrant up --provider virtualbox` in the local directory where the [Vagrantfile](Vagrantfile) is in to download the DevStack Vagrant box and spin up the VM
 
 Note: On first run, Vagrant will download the base box required.
@@ -81,7 +85,6 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
 
 ### Step 3: Test that the webpage works
 - Grab the private ip by running the command `nova list`
-
 
    ```
   nova list

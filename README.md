@@ -87,28 +87,7 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
 
    ![screenshot/8885.png](screenshot/8885.png)
 
-### Step 4: Create a floating ip address
-1. Create floating ip `nova floating-ip-create`
-
-   ```
-   +------------+-----------+----------+--------+
-   | Ip         | Server Id | Fixed Ip | Pool   |
-   +------------+-----------+----------+--------+
-   | 172.24.4.3 | -         | -        | public |
-   +------------+-----------+----------+--------+
-   ```
-2. Assign it to our container `nova floating-ip-associate test0 172.24.4.3`
-3. Now access our service `curl http://172.24.4.3`
-
-   ```
-   <!DOCTYPE html>
-   <html>
-           <head>
-                   <title>Your web server is working</title>
-   [...]
-   ```
-### Step 5: View your instance
-1. [Login to your OpenStack dashboard](#login-to-your-openstack-dashboard) and view your newly created instance
+4. [Login to your OpenStack dashboard](#login-to-your-openstack-dashboard) and view your newly created instance
 
    ![screenshot/system\_hypervisors.png](screenshot/system_hypervisors.png)
 

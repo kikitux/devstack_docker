@@ -2,7 +2,7 @@
 
 ### General setup
 1. Download and install [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html)
-2. Pull down the [Vagrantfile](Vagrantfile) in this repo locally, or just clone the repo `git clone https://github.com/kikitux/devstack_docker.git`
+2. Pull down the [Vagrantfile](Vagrantfile) in this repo locally, or just clone it `git clone https://github.com/kikitux/devstack_docker.git`
 3. Run `vagrant up --provider virtualbox` in the local directory the [Vagrantfile](Vagrantfile) is in to download the DevStack Vagrant box and spin up the VM
 
 ### Login to your OpenStack dashboard

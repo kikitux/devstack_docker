@@ -1,17 +1,17 @@
 ## DevStack Docker Demo for Openstack HP Meetup
 
 ### General setup
-- Download and install [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html)
+1. Download and install [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html)
    
-Tip: If you already have Vagrant installed, we suggest update to the current version available.
+   Tip: If you already have Vagrant installed, we suggest update to the current version available.
 
-- Download a copy of this repo in [zip format](https://github.com/kikitux/devstack_docker/archive/master.zip) or just clone it
+2. Download a copy of this repo in [zip format](https://github.com/kikitux/devstack_docker/archive/master.zip) or just clone it
 
-`git clone https://github.com/kikitux/devstack_docker.git`
+   `git clone https://github.com/kikitux/devstack_docker.git`
 
-- Run `vagrant up --provider virtualbox` in the local directory where the [Vagrantfile](Vagrantfile) is in to download the DevStack Vagrant box and spin up the VM
+3. Run `vagrant up --provider virtualbox` in the local directory where the [Vagrantfile](Vagrantfile) is in to download the DevStack Vagrant box and spin up the VM
 
-Note: On first run, Vagrant will download the base box required.
+   Tip: On first run, Vagrant will download the base box required.
 
 ### Login to your OpenStack dashboard
 - Go to http://localhost:8888
@@ -28,13 +28,13 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
 - Run `vagrant ssh` in the directory the [Vagrantfile](Vagrantfile) is in
 - Go to the devstack directory
 
-`cd /opt/stack/devstack`
+   `cd /opt/stack/devstack`
 
 - Source the demo environment
 
-`. openrc demo`
+   `. openrc demo`
 
-Tip: the command is `. command argument`, it starts with a dot
+   Tip: the command is `. command argument`, it starts with a dot
 
 - Setup security groups
 
@@ -57,18 +57,18 @@ Tip: the command is `. command argument`, it starts with a dot
 
 - Provide internet access to the containers 
 
-`sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`
+   `sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`
 
 ### Step 2: Start a Docker container
 - Source the admin environment 
 
-`. openrc admin`
+   `. openrc admin`
 
-Tip: the command is `. command argument`, it starts with a dot
+   Tip: the command is `. command argument`, it starts with a dot
 
 - Pull down the [larsks/thttpd](https://registry.hub.docker.com/u/larsks/thttpd/) Docker image 
 
-`docker pull larsks/thttpd`
+   `docker pull larsks/thttpd`
 
 - Create a glance image
 
@@ -81,13 +81,13 @@ Tip: the command is `. command argument`, it starts with a dot
 
 - Source the demo environment 
 
-`. openrc demo`
+   `. openrc demo`
 
-Tip: the command is `. command argument`, it starts with a dot
+   Tip: the command is `. command argument`, it starts with a dot
 
 - Boot the glance image 
 
-`nova boot --image larsks/thttpd --flavor m1.small test0`
+   `nova boot --image larsks/thttpd --flavor m1.small test0`
 
 ### Step 3: Test that the webpage works
 - Grab the private ip by running the command `nova list`

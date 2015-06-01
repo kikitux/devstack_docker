@@ -34,6 +34,8 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
 
 `. openrc demo`
 
+Tip: the command is `. command argument`, it starts with a dot
+
 - Setup security groups
 
    ```
@@ -62,6 +64,8 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
 
 `. openrc admin`
 
+Tip: the command is `. command argument`, it starts with a dot
+
 - Pull down the [larsks/thttpd](https://registry.hub.docker.com/u/larsks/thttpd/) Docker image 
 
 `docker pull larsks/thttpd`
@@ -78,6 +82,8 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
 - Source the demo environment 
 
 `. openrc demo`
+
+Tip: the command is `. command argument`, it starts with a dot
 
 - Boot the glance image 
 

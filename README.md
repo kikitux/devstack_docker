@@ -44,7 +44,7 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
 ### Step 2: Start a Docker container
 1. Source the admin environment `. openrc admin`
 2. Pull down the [larsks/thttpd](https://registry.hub.docker.com/u/larsks/thttpd/) Docker image `docker pull larsks/thttpd`
-3. Create glance image
+3. Create a glance image
 
    ```
    docker save larsks/thttpd |
@@ -53,7 +53,7 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
      --disk-format raw
    ```
 4. Source the demo environment `. openrc demo`
-5. Boot glance image `nova boot --image larsks/thttpd --flavor m1.small test0`
+5. Boot the glance image `nova boot --image larsks/thttpd --flavor m1.small test0`
 
 ### Step 3: Test that the webpage works
 1. Grab the private ip by running the command `nova list`

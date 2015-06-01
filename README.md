@@ -131,3 +131,47 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
    ![screenshot/system\_information.png](screenshot/system_information.png)
 
    ![screenshot/instance\_details\_test0.png](screenshot/instance_details_test0.png)
+   
+   
+### Step 5: Rebuild the environment if required, openstack way
+
+At somepoint if you require rebuild the environment, you can use devstack tools
+
+1. Connect to the guest
+
+   `vagrant ssh`
+   
+2. Deconfigure using unstack.sh
+
+   ```
+   cd /opt/devstack
+   ./unstack.sh
+   ```
+
+3. Run stack.sh
+
+   ```
+   cd /opt/devstack
+   ./stack.sh
+   ```
+
+   example run:
+   ```
+   This is your host ip: 10.0.2.15
+   Horizon is now available at http://10.0.2.15/
+   Keystone is serving at http://10.0.2.15:5000/
+   The default users are: admin and demo
+   The password: password
+
+   real    7m29.726s
+   ```
+   
+### Step 6: Rebuild the environment if required, vagrant way
+
+At somepoint if you require rebuild the environment, you can use vagrant
+
+1. `vagrant destroy`
+
+2. `vagrant up --provider=virtualbox`
+
+   

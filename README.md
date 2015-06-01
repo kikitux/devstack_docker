@@ -7,8 +7,7 @@
 
 ### Login to your OpenStack dashboard
 1. Go to http://localhost:8888
-2. Login to admin with username `admin` and password `password`
-3. Login to demo with username `demo` and password `password`
+2. Login to admin with username `admin` and password `password` or login to demo with username `demo` and password `password`
 
    ![screenshot/login\_admin.png](screenshot/login_admin.png)
 

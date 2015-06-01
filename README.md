@@ -2,33 +2,20 @@
 
 ### General setup
 1. Download and install [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html)
-2. Pull down the [Vagrantfile](Vagrantfile) in this repo
-   ```ruby
-   Vagrant.configure("2") do |config|
-     config.vm.box = "alvaro/devstack_docker"
-     config.vm.hostname = "devstack"
+2. Pull down the [Vagrantfile](Vagrantfile) in this repo locally, or just clone the repo `git clone https://github.com/kikitux/devstack_docker.git`
+3. Run `vagrant up --provider virtualbox` in the local directory the [Vagrantfile](Vagrantfile) is in to download the DevStack Vagrant box and spin up the VM
 
-     config.vm.network "forwarded_port", guest: 80, host: 8888
-     config.vm.network "forwarded_port", guest: 5000, host: 5555
-     config.vm.network "forwarded_port", guest: 8500, host: 8500
-     config.vm.network "forwarded_port", guest: 8880, host: 8880
-     config.vm.network "forwarded_port", guest: 8881, host: 8881
-     config.vm.network "forwarded_port", guest: 8882, host: 8882
-     config.vm.network "forwarded_port", guest: 8883, host: 8883
-     config.vm.network "forwarded_port", guest: 8884, host: 8884
-     config.vm.network "forwarded_port", guest: 8885, host: 8885
+### Login to your OpenStack dashboard
+1. Go to http://localhost:8888
+2. Login to admin with username `admin` and password `password`
+3. Login to demo with username `demo` and password `password`
 
-     config.vm.provision :shell, privileged: false, :inline => "bash /vagrant/scripts/provision.sh"
-     config.vm.provision :shell, privileged: false, :inline => "bash /vagrant/scripts/nginx.sh"
+   ![screenshot/login\_admin.png](screenshot/login_admin.png)
 
-     config.vm.provider :virtualbox do |vb|
-       vb.customize ["modifyvm", :id, "--cpus", "2"]
-       vb.customize ["modifyvm", :id, "--memory", "5000"]
-     end
-   end
-   ```
-3. Run `vagrant up --provider virtualbox` in the directory the [Vagrantfile](Vagrantfile) is in to download the DevStack Vagrant box and spin up the VM
-4. That's it! [Login to your OpenStack dashboard](#login-to-your-openstack-dashboard), then follow the below steps to spin up a web server which can be viewed in your dashboard
+That's it, you have a fully functioning DevStack environment!
+
+---
+Now that you have your DevStack running, it's time to use it. Below are steps to setup a sample web server on your DevStack.
 
 ### Step 1: Neutron configuration
 1. Run `vagrant ssh` in the directory the [Vagrantfile](Vagrantfile) is in
@@ -119,13 +106,8 @@
                    <title>Your web server is working</title>
    [...]
    ```
-
-### Login to your OpenStack dashboard
-1. Go to http://localhost:8888
-2. Login to admin with username `admin` and password `password`
-3. Login to demo with username `demo` and password `password`
-
-   ![screenshot/login\_admin.png](screenshot/login_admin.png)
+### Step 5: View your instance
+1. [Login to your OpenStack dashboard](#login-to-your-openstack-dashboard) and view your newly created instance
 
    ![screenshot/system\_hypervisors.png](screenshot/system_hypervisors.png)
 

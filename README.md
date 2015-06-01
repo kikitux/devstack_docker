@@ -14,8 +14,8 @@
    Tip: On first run, Vagrant will download the base box required.
 
 ### Login to your OpenStack dashboard
-- Go to http://localhost:8888
-- Login to admin with username `admin` and password `password` or login to demo with username `demo` and password `password`
+1. Go to http://localhost:8888
+2. Login to admin with username `admin` and password `password` or login to demo with username `demo` and password `password`
 
    ![screenshot/login\_admin.png](screenshot/login_admin.png)
 
@@ -25,18 +25,18 @@ That's it, you have a fully functioning DevStack environment!
 Now that you have your DevStack running, it's time to use it. Below are steps to setup a sample web server on your DevStack.
 
 ### Step 1: Neutron configuration
-- Run `vagrant ssh` in the directory the [Vagrantfile](Vagrantfile) is in
-- Go to the devstack directory
+1. Run `vagrant ssh` in the directory the [Vagrantfile](Vagrantfile) is in
+2. Go to the devstack directory
 
    `cd /opt/stack/devstack`
 
-- Source the demo environment
+3. Source the demo environment
 
    `. openrc demo`
 
    Tip: the command is `. command argument`, it starts with a dot
 
-- Setup security groups
+4. Setup security groups
 
    ```
    neutron security-group-rule-create --protocol icmp \
@@ -55,22 +55,22 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
    --direction ingress --remote-ip-prefix 0.0.0.0/0 default
    ```
 
-- Provide internet access to the containers 
+5. Provide internet access to the containers 
 
    `sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`
 
 ### Step 2: Start a Docker container
-- Source the admin environment 
+1. Source the admin environment 
 
    `. openrc admin`
 
    Tip: the command is `. command argument`, it starts with a dot
 
-- Pull down the [larsks/thttpd](https://registry.hub.docker.com/u/larsks/thttpd/) Docker image 
+2. Pull down the [larsks/thttpd](https://registry.hub.docker.com/u/larsks/thttpd/) Docker image 
 
    `docker pull larsks/thttpd`
 
-- Create a glance image
+3. Create a glance image
 
    ```
    docker save larsks/thttpd |
@@ -79,18 +79,18 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
      --disk-format raw
    ```
 
-- Source the demo environment 
+4. Source the demo environment 
 
    `. openrc demo`
 
    Tip: the command is `. command argument`, it starts with a dot
 
-- Boot the glance image 
+5. Boot the glance image 
 
    `nova boot --image larsks/thttpd --flavor m1.small test0`
 
 ### Step 3: Test that the webpage works
-- Grab the private ip by running the command `nova list`
+1. Grab the private ip by running the command `nova list`
 
    ```
   nova list
@@ -102,7 +102,7 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
    +----...+-------+--------+...+-------------+--------------------+
    ```
 
-- Run `curl http://internal_ip` to verify we have a working web server
+2. Run `curl http://internal_ip` to verify we have a working web server
 
    ```
    <!DOCTYPE html>
@@ -112,7 +112,7 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
    [...]
    ```
 
-- In the browser go to http://localhost:888n where n is the IP of the server
+3. In the browser go to http://localhost:888n where n is the IP of the server
 
    ```
    10.0.0.1 -> localhost 8881
@@ -124,7 +124,7 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
 
    ![screenshot/8885.png](screenshot/8885.png)
 
-- [Login to your OpenStack dashboard](#login-to-your-openstack-dashboard) and view your newly created instance
+4. [Login to your OpenStack dashboard](#login-to-your-openstack-dashboard) and view your newly created instance
 
    ![screenshot/system\_hypervisors.png](screenshot/system_hypervisors.png)
 

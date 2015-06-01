@@ -2,8 +2,11 @@
 
 ### General setup
 1. Download and install [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html)
-2. Pull down the [Vagrantfile](Vagrantfile) in this repo locally, or just clone it `git clone https://github.com/kikitux/devstack_docker.git`
-3. Run `vagrant up --provider virtualbox` in the local directory the [Vagrantfile](Vagrantfile) is in to download the DevStack Vagrant box and spin up the VM
+   If you already have Vagrant installed, we suggest update to the current version available.
+2. Download a copy of this repo in [zip format](https://github.com/kikitux/devstack_docker/archive/master.zip) or just clone it `git clone https://github.com/kikitux/devstack_docker.git`
+3. Run `vagrant up --provider virtualbox` in the local directory where the [Vagrantfile](Vagrantfile) is in to download the DevStack Vagrant box and spin up the VM
+
+Note: On first run, Vagrant will download the base box required.
 
 ### Login to your OpenStack dashboard
 1. Go to http://localhost:8888
@@ -18,8 +21,14 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
 
 ### Step 1: Neutron configuration
 1. Run `vagrant ssh` in the directory the [Vagrantfile](Vagrantfile) is in
-2. Go to the devstack directory `cd /opt/stack/devstack`
-3. Source the demo environment `. openrc demo`
+2. Go to the devstack directory
+
+`cd /opt/stack/devstack`
+
+3. Source the demo environment
+
+`. openrc demo`
+
 4. Setup security groups
 
    ```
@@ -38,11 +47,20 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
    --port-range-min 80 --port-range-max 80 \
    --direction ingress --remote-ip-prefix 0.0.0.0/0 default
    ```
-5. Provide internet access to the containers `sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`
+
+5. Provide internet access to the containers 
+
+`sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`
 
 ### Step 2: Start a Docker container
-1. Source the admin environment `. openrc admin`
-2. Pull down the [larsks/thttpd](https://registry.hub.docker.com/u/larsks/thttpd/) Docker image `docker pull larsks/thttpd`
+1. Source the admin environment 
+
+`. openrc admin`
+
+2. Pull down the [larsks/thttpd](https://registry.hub.docker.com/u/larsks/thttpd/) Docker image 
+
+`docker pull larsks/thttpd`
+
 3. Create a glance image
 
    ```
@@ -51,19 +69,29 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
      --is-public true --container-format docker \
      --disk-format raw
    ```
-4. Source the demo environment `. openrc demo`
-5. Boot the glance image `nova boot --image larsks/thttpd --flavor m1.small test0`
+
+4. Source the demo environment 
+
+`. openrc demo`
+
+5. Boot the glance image 
+
+`nova boot --image larsks/thttpd --flavor m1.small test0`
 
 ### Step 3: Test that the webpage works
 1. Grab the private ip by running the command `nova list`
 
+
    ```
+  nova list
+
    +----...+-------+--------+...+-------------+--------------------+
    | ID ...| Name  | Status |...| Power State | Networks           |
    +----...+-------+--------+...+-------------+--------------------+
    | 0c3...| test0 | ACTIVE |...| Running     | private=internal_ip|
    +----...+-------+--------+...+-------------+--------------------+
    ```
+
 2. Run `curl http://internal_ip` to verify we have a working web server
 
    ```
@@ -73,6 +101,7 @@ Now that you have your DevStack running, it's time to use it. Below are steps to
                    <title>Your web server is working</title>
    [...]
    ```
+
 3. In the browser go to http://localhost:888n where n is the IP of the server
 
    ```

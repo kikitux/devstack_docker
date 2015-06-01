@@ -3,7 +3,7 @@
 ### General setup
 - Download and install [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html)
    
-If you already have Vagrant installed, we suggest update to the current version available.
+Tip: If you already have Vagrant installed, we suggest update to the current version available.
 
 - Download a copy of this repo in [zip format](https://github.com/kikitux/devstack_docker/archive/master.zip) or just clone it
 

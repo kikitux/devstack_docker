@@ -22,6 +22,8 @@
 That's it, you have a fully functioning DevStack environment!
 
 ---
+## Setup Sample Web Server
+
 Now that you have your DevStack running, it's time to use it. Below are steps to setup a sample web server on your DevStack.
 
 ### Step 1: Neutron configuration

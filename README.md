@@ -9,7 +9,7 @@
 
    `git clone https://github.com/kikitux/devstack_docker.git`
 
-3. Run `vagrant up --provider virtualbox` in the local directory where the [Vagrantfile](Vagrantfile) is in to download the DevStack Vagrant box and spin up the VM
+3. Navigate into your newly created devstack_docker directory `cd devstack_docker`, then run `vagrant up --provider virtualbox` in the local directory where the [Vagrantfile](Vagrantfile) is in to download the DevStack Vagrant box and spin up the VM
 
    Tip: On first run, Vagrant will download the base box required.
 
